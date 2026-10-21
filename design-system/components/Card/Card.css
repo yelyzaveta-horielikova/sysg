@@ -1,0 +1,112 @@
+/* Unified Card — merges Figma Card, Small-card, Big-card and industries-card. Values from tokens.json. */
+.sg-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 100%;
+  padding: var(--sg-space-inset-sm);
+  color: var(--sg-color-text-primary);
+  text-decoration: none;
+  font-family: var(--sg-font-family-base);
+  transition: background-color 0.15s;
+}
+
+/* Surfaces */
+.sg-card--filled { background: var(--sg-color-surface-muted); border-radius: var(--sg-radius-md); }
+.sg-card--filled.sg-card--media-illustration.sg-card--title-large { padding-top: var(--sg-space-inset-md); }
+/* No border of its own: dividers between outlined cards come from CardGrid variant="divided" */
+.sg-card--outlined { background: transparent; }
+
+/* Media */
+.sg-card__media { display: flex; justify-content: flex-start; }
+.sg-card--align-center .sg-card__media { justify-content: center; }
+.sg-card--media-illustration .sg-card__media { margin-bottom: var(--sg-space-inset-md); }
+.sg-card--media-illustration.sg-card--title-small .sg-card__media { margin-bottom: var(--sg-space-inset-sm); }
+.sg-card--media-icon .sg-card__media { margin-bottom: var(--sg-space-stack-title-to-body); }
+
+/* Illustration: 150 (large) / 140 (small); grows to 180 on hover. Reserve 180 so the layout doesn't jump. */
+.sg-card__illustration { display: block; height: 150px; width: auto; transition: transform 0.2s; transform-origin: center bottom; }
+.sg-card--title-large.sg-card--media-illustration .sg-card__media { height: 180px; align-items: flex-end; }
+.sg-card--title-small .sg-card__illustration { height: 140px; }
+
+.sg-card__icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--sg-radius-xl);
+  background: var(--sg-color-surface-muted);
+  color: var(--sg-color-accent-icon);
+}
+/* Without a tile: same 64px box, the icon or image fills it (one icon size everywhere, system.md → Icons) */
+.sg-card__icon-box {
+  display: inline-flex;
+  width: 64px;
+  height: 64px;
+  color: var(--sg-color-accent-icon);
+}
+.sg-card__icon-box > *,
+.sg-card__icon-box svg,
+.sg-card__icon-box img { display: block; width: 100%; height: 100%; object-fit: contain; }
+/* On a grey card the tile would disappear, so it turns white (assumption, see Card docs). */
+.sg-card--filled .sg-card__icon-tile { background: var(--sg-color-surface-page); }
+
+/* Content */
+.sg-card__content { flex: 1; display: flex; flex-direction: column; gap: var(--sg-space-stack-title-to-body); }
+/* Badges always sit at the bottom of the card: with no media the title is at the top and the badges at the bottom */
+.sg-card__badges { margin-top: auto; }
+/* Chip cards need some height for that spread (Figma industries-card: 278px) */
+.sg-card--has-badges:not(.sg-card--media-illustration):not(.sg-card--media-icon) { min-height: 278px; }
+
+/* Background image: fills the card; title and badges at the bottom in white (no overlay) */
+.sg-card--media-background { position: relative; overflow: hidden; border-radius: var(--sg-radius-md); color: var(--sg-color-text-on-dark); }
+.sg-card__background { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sg-card--media-background .sg-card__content { position: relative; z-index: 1; justify-content: flex-end; }
+.sg-card--media-background .sg-card__badges { margin-top: 0; }
+.sg-card--media-background .sg-card__title { color: var(--sg-color-text-on-dark); }
+/* Centered: only the media and the title are centred; text, list and badges stay left-aligned */
+.sg-card--align-center .sg-card__title { text-align: center; }
+
+.sg-card__title {
+  margin: 0;
+  color: var(--sg-color-text-primary);
+  font-size: var(--sg-text-subsection-title-size);
+  line-height: var(--sg-text-subsection-title-line-height);
+  font-weight: var(--sg-text-subsection-title-weight);
+  font-variation-settings: var(--sg-text-subsection-title-variation);
+  transition: color 0.15s;
+}
+.sg-card--title-small .sg-card__title {
+  font-size: var(--sg-text-body-article-size);
+  line-height: var(--sg-text-body-article-line-height);
+  font-weight: var(--sg-text-body-article-weight);
+  font-variation-settings: var(--sg-text-body-article-variation);
+}
+.sg-card--title-accent .sg-card__title { color: var(--sg-color-action-primary); }
+
+.sg-card__text,
+.sg-card__list {
+  margin: 0;
+  font-size: var(--sg-text-body-article-size);
+  line-height: var(--sg-text-body-article-line-height);
+  font-weight: var(--sg-text-body-article-weight);
+  font-variation-settings: var(--sg-text-body-article-variation);
+}
+.sg-card__list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.625rem; }
+.sg-card__list li::before { content: '—'; margin-right: 0.375rem; }
+
+/* Hover (only when the card is a link) */
+.sg-card--interactive { cursor: pointer; }
+.sg-card--filled.sg-card--interactive:hover { background: var(--sg-color-surface-muted-hover); }
+.sg-card--filled.sg-card--interactive.sg-card--title-large:hover .sg-card__illustration { transform: scale(1.2); }
+.sg-card--filled.sg-card--interactive.sg-card--title-small:hover .sg-card__title { color: var(--sg-color-action-primary); }
+.sg-card--outlined.sg-card--interactive:hover .sg-card__title { color: var(--sg-palette-sg-dark); }
+
+/* Plain: no fill, no border, no padding (image cards, e.g. case-study before/after) */
+.sg-card--plain { background: transparent; padding: 0; }
+/* Image media: full content width, natural height or fixed ratio */
+.sg-card--media-image .sg-card__media { display: block; margin-bottom: var(--sg-space-stack-title-to-body); }
+/* Background image with tone="light": dark title and Black badges */
+.sg-card--media-background.sg-card--tone-light,
+.sg-card--media-background.sg-card--tone-light .sg-card__title { color: var(--sg-color-text-primary); }

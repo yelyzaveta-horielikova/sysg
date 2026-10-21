@@ -1,0 +1,24 @@
+/* Hero text — values from tokens.json via --sg-* variables */
+.sg-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sg-space-section-m);
+  max-width: 1026px;
+  color: var(--sg-color-text-primary);
+  font-family: var(--sg-font-family-base);
+}
+.sg-hero-text__title {
+  margin: 0;
+  font-size: var(--sg-text-display-size);
+  line-height: var(--sg-text-display-line-height);
+  font-weight: var(--sg-text-display-weight);
+  font-variation-settings: var(--sg-text-display-variation);
+}
+/* Lead: off-scale website value from Figma (22/1.3 Light), hard-coded on purpose (not a token) */
+.sg-hero-text__lead {
+  margin: 0;
+  font-size: 1.375rem;
+  line-height: 1.3;
+  font-weight: 300;
+  font-variation-settings: "CRSV" 0, "SHRP" 0;
+}

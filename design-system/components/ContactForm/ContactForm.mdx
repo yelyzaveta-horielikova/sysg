@@ -1,0 +1,52 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './ContactForm.stories';
+
+<Meta of={S} />
+
+# Form
+
+The main contact form (Figma "dark-form") on a `surface-dark` panel with radius md. It is built from `TextField` and `FileDropzone`, which are also available on their own.
+
+<Canvas of={S.Default} />
+<Controls of={S.Default} />
+
+## Layout
+
+| Viewport | Layout | Padding |
+|---|---|---|
+| ≥1024 | two equal columns, 64px apart. Left: heading, intro, divider, other ways to connect. Right: form | 60 |
+| 768–1023 | stacked: heading, intro, other ways to connect, then the form | 60 |
+| below 768 | stacked: heading, intro, form, then other ways to connect | 20 |
+
+Below 1024 the panel runs full width without the 20px page margins (`layout.md`).
+
+## Parts
+
+- **Heading** in `statement`; **intro** in `body`; **contact links** with 24px icons in SG light blue, text in `body-article`.
+- **Divider** under the intro: white at 40%, desktop only.
+- **TextField:** an underline field with a floating label. When empty it shows the label on the value line; on focus or once filled, the label moves above. Error state: label and line in `error`, message below in `caption`. `multiline` grows up to 110px.
+- **FileDropzone:** a dashed box (white at 40%, radius sm) with "Click to upload" in SG light blue (underline at 40%), "or drag and drop" and the file-type hint at 80% opacity. While a file is dragged over it: 4% white fill, solid-white dashed border, larger title. Attached files are listed below with their size and a remove button. Files over 30 MB show an error.
+- **Submit:** Button White, stretched to the form column. On phones it is 44px tall with a 16/1.5 label (Figma).
+- **reCAPTCHA note:** 12/1.4 Light at 65% opacity, desktop only.
+- Off-scale website values, hard-coded in the component: reCAPTCHA note 12/1.4, drop-zone title 16/1.12 (20/1.3 while dragging), hint 14/1.3, phone button label 16/1.5.
+
+## States
+
+| State | What happens |
+|---|---|
+| idle | form is editable |
+| drag and drop | dragging files over the panel turns it into one dashed drop area |
+| loading | after a valid submit: fields disabled, button shows its loader |
+| sent | the form is replaced by the logo mark, a thank-you message and a "Back to form" button |
+
+Name and a valid email are required; errors show on submit.
+
+## Decisions (Figma differs or is silent)
+
+- The file size uses white at 60% opacity, as in Figma. It isn't a colour token.
+
+## Figma
+
+[dark-form](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=563-28728). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

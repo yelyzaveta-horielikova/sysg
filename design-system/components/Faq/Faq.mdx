@@ -1,0 +1,23 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './Faq.stories';
+
+<Meta of={S} />
+
+# FAQ
+
+The FAQ block: a Section heading followed by questions (Figma FAQ block + "faq-text"). Max 1240px wide, single column at every size. `FaqItem` is a single question (`subsection-title`, h3) with its answer (`body-article`) 16px below.
+
+<Canvas of={S.Default} />
+<Controls of={S.Default} />
+
+## Rules
+
+- Items and the heading are 60px apart (`spacing.section.M`).
+- Answers are always visible: Figma shows no accordion.
+- Usually the last block before the form or footer (inferred).
+
+## Figma
+
+[faq-text](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=563-16856). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

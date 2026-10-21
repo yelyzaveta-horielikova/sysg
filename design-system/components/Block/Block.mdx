@@ -1,0 +1,37 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './Block.stories';
+
+<Meta of={S} />
+
+# Block & columns
+
+The page layout primitives (`layout.md`).
+
+<Canvas of={S.MixedColumns} />
+<Controls of={S.Stacked} />
+
+## Block
+
+One page block: the single wrapper (content max 1520, 20px side margins), an optional Section heading and the content.
+
+| `layout` | Structure |
+|---|---|
+| `stacked` (default) | heading on top, content `spacing.section.M` below |
+| `side` | from 1024: heading column (320–420) beside the content, `gap.L`; stacked below |
+| `inline` | title beside the intro on top (Section heading "Right"), content below |
+
+- Several children are content groups, `spacing.section.M` apart.
+- `bleed` drops the 20px margins below 1024 (dark form and other coloured blocks).
+- Without a heading pass `label` so the section has an accessible name.
+- `BlockLayout` is the same heading + content arrangement without the wrapper, for a titled group inside a block (use `as="h3"`).
+- Blocks are stacked `spacing.section.L` apart by the page or template.
+
+## Columns
+
+Different content side by side (`layout.md` → Composing blocks). `spans` gives each child a whole number of the 12 grid columns, e.g. `[4, 8]`, `[6, 6]`, `[4, 4, 4]`. They should add up to 12.
+
+- From 1024: columns `gap.L` apart, equal height.
+- Below 1024: one column, in source order.
+- A grid inside a column follows density on that column's width: check that it still fits the number of items you want per row.
+
+<Stories />

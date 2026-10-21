@@ -1,0 +1,35 @@
+import { fileURLToPath } from 'node:url';
+import type { StorybookConfig } from '@storybook/react-vite';
+import remarkGfm from 'remark-gfm';
+
+// The design-system spec (tokens.json, *.md) lives next to this project.
+const designSystemDir = fileURLToPath(new URL('../../design-system', import.meta.url));
+
+const config: StorybookConfig = {
+  "stories": [
+    "../src/**/*.mdx",
+    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    // Components live in the design-system package, next to their stories and docs
+    "../../design-system/components/**/*.mdx",
+    "../../design-system/components/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  ],
+  "addons": [
+    "@chromatic-com/storybook",
+    "@storybook/addon-vitest",
+    "@storybook/addon-a11y",
+    {
+      name: "@storybook/addon-docs",
+      // GitHub-style tables in component docs (*.mdx)
+      options: { mdxPluginOptions: { mdxCompileOptions: { remarkPlugins: [remarkGfm] } } },
+    },
+    "@storybook/addon-mcp"
+  ],
+  "framework": "@storybook/react-vite",
+  async viteFinal(viteConfig) {
+    const { mergeConfig, searchForWorkspaceRoot } = await import('vite');
+    return mergeConfig(viteConfig, {
+      server: { fs: { allow: [searchForWorkspaceRoot(process.cwd()), designSystemDir] } },
+    });
+  },
+};
+export default config;

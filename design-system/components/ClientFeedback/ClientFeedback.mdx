@@ -1,0 +1,31 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './ClientFeedback.stories';
+
+<Meta of={S} />
+
+# Client feedback
+
+A single client quote from a review platform (Figma "Client-feedback").
+
+<Canvas of={S.Default} />
+<Controls of={S.Default} />
+
+## Structure
+
+- `surface-muted` fill with a 1px `border-emphasis` line on the **left only**. No corner radius. Padding 30/20 (`inset.sm` / `inset.xs`), 40px between parts.
+- **Header:** the platform logo (26px) and name (22/1.3 Light) on the left; the rating (18/1.4 ExtraLight) and a star on the right. Both sizes are off-scale website values, hard-coded in the component.
+- **Quote** in `body-article`.
+- **Author:** an optional 72px photo (radius `sm`), the name in `body-article` and the role in `caption`.
+
+## Rules
+
+- One quote per card.
+- Used in the Client-feedback block (next to a `side` Section heading, stacked below 1024) and in Feedback & video (`patterns.md`).
+- The card fills the width it is given; the block sets the width.
+- Clutch shows its colour logo, as in Figma. Upwork and GoodFirms use the monochrome logos in the text colour, because Figma has no colour versions of them.
+
+## Figma
+
+[Client-feedback](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=550-15445). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

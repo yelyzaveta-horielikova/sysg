@@ -1,0 +1,69 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as CardStories from './Card.stories';
+
+<Meta of={CardStories} />
+
+# Card
+
+One card for equal items in a grid. It replaces four Figma components (Card, Small-card, industries-card and Big-card) through props.
+
+<Canvas of={CardStories.Feature} />
+<Controls of={CardStories.Feature} />
+
+## Structure
+
+All parts are optional except the title, in this order:
+
+1. **Media**: an illustration (150px; 140px with a small title), an icon in a 64px box, on a tile (radius `xl`, default) or without one (`tile: false`, the icon fills the box), or a **background** image filling the whole card.
+2. **Title**: `large` uses `subsection-title`; `small` uses `body-article`. With `align="center"`, only the media and the title are centred; text, list and badges stay left-aligned.
+3. **Text** (`body-article`).
+4. **Dash list** (— item).
+5. **Badges** (Badge Medium; Black, or White on a background image). Badges always sit at the bottom of the card.
+
+## Chip cards
+
+Cards with badges (Figma: industries-card) come in two options:
+
+| Option | Props | Layout |
+|---|---|---|
+| Without image | `surface="filled"`, `badges`, no media | grey fill; title at the top, badges at the bottom |
+| With image | `media={{ kind: 'background', src }}`, `badges` | image fills the card; title and badges at the bottom in white, no overlay |
+
+Chip cards are at least 278px tall (the Figma industries-card height), so the title and badges stay apart. In a row, the badges line up at the bottom.
+
+<Canvas of={CardStories.ChipsGrid} />
+
+## Rules
+
+- Every card in a row uses the same props. Vary only the content.
+- Do not create a new card for minor content differences. Use these props.
+- Lay cards out with `CardGrid` (below):
+  - `filled` cards use `variant="gap"` with the pattern's gap token.
+  - `outlined` cards use `variant="divided"`: they touch (`gap.XS`) and divider lines appear only between cards, with no outer border.
+- An `outlined` card has no border of its own, so never use it outside a divided grid.
+- The icon tile is optional and may differ between blocks; inside one grid all cards use the same choice. The icon size is always the 64px box (`system.md` → Icons).
+- Use `titleAccent` only for the service grid (Figma: Big-card "Active").
+- Pass `href` to make the whole card a link. This enables the hover state:
+  - filled: `surface-muted-hover` background, and the illustration grows to 180px;
+  - filled with a small title: the title turns sg-blue;
+  - outlined: the title turns sg-dark.
+- Minimum widths come from the grid: about 200px for small tiles, 320px for feature cards and 420px for outlined cards.
+
+## Unified values (differ from the individual Figma components)
+
+- There is no overlay on the background image, so choose images whose lower part keeps white text readable.
+- Padding is 30px on every side. Filled cards with an illustration and a large title get 40px at the top.
+- Content gap is 20px everywhere (`stack.title-to-body`). Figma used 40px between text and list on Big-card, and 60px between title and chips on industries-card.
+- On a filled card the icon tile is white so it stays visible. Figma only has the icon tile on outlined cards.
+
+## CardGrid
+
+Lays out cards in columns that respond to the grid's own width. `columns` takes a number or `{ base, sm, md, lg }` for widths from 0, 768, 1024 and 1280 (default `{ base: 1, sm: 2, lg: 3 }`).
+
+<Canvas of={CardStories.OutlinedGrid} />
+
+## Figma
+
+[Card](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=540-10093), [Small-card](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=540-9972), [industries-card](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=542-14557), [Big-card](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=549-15311). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

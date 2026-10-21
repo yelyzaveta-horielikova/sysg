@@ -1,0 +1,17 @@
+{
+  "name": "@sysgears/design-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "SysGears design system: spec (tokens.json, *.md) and React components.",
+  "exports": {
+    ".": "./index.ts",
+    "./styles/tokens": "./styles/tokens.ts",
+    "./tokens.json": "./tokens.json",
+    "./components/*": "./components/*"
+  },
+  "peerDependencies": {
+    "react": ">=19",
+    "react-dom": ">=19"
+  }
+}

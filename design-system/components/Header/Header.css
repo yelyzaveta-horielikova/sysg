@@ -1,0 +1,83 @@
+/* Header — values from tokens.json via --sg-* variables.
+   Breakpoints come from tokens.json → breakpoint (xs 480, lg 1280); CSS can't read variables
+   inside @container, so the numbers are repeated here. Base styles = mobile. */
+.sg-header {
+  container: sg-header / inline-size;
+  background: var(--sg-color-surface-page);
+  font-family: var(--sg-font-family-base);
+}
+
+.sg-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  max-width: var(--sg-container-header-max);
+  margin: 0 auto;
+  /* Mobile: 16 vertical; side margin is the structural 20px */
+  padding: 1rem var(--sg-container-side-margin);
+}
+
+.sg-header__logo { display: inline-flex; flex-shrink: 0; }
+.sg-header__logo img { display: block; width: 141px; height: 40px; }
+
+/* Nav: desktop only */
+.sg-header__nav { display: none; }
+
+.sg-header__actions { display: flex; align-items: center; }
+
+.sg-header__icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  border: 0;
+  background: none;
+  color: var(--sg-color-text-primary);
+  cursor: pointer;
+}
+.sg-header__search { width: 60px; height: 60px; }
+.sg-header__burger { width: 62px; height: 64px; }
+.sg-header__burger-lines { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 26px; height: 28px; padding: 0 5px; box-sizing: border-box; }
+.sg-header__burger-lines span { display: block; height: 1px; background: currentColor; }
+
+/* CTA: tablet and desktop */
+.sg-header__cta { display: none; }
+
+/* Nav item */
+.sg-nav-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  box-sizing: border-box;
+  height: 60px;
+  padding: 0 1rem;
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid transparent; /* keeps the label centred */
+  color: var(--sg-color-text-primary);
+  text-decoration: none;
+  font-size: var(--sg-text-link-size);
+  line-height: var(--sg-text-link-line-height);
+  font-weight: var(--sg-text-link-weight);
+  font-variation-settings: var(--sg-text-link-variation);
+  transition: color 0.15s, border-color 0.15s;
+}
+.sg-nav-item--submenu { padding-right: 0.625rem; }
+.sg-nav-item__chevron { color: var(--sg-color-accent-icon); transition: transform 0.15s; }
+.sg-nav-item:hover,
+.sg-nav-item:focus-visible { color: var(--sg-color-text-link-hover); border-bottom-color: var(--sg-color-action-primary); }
+.sg-nav-item:hover .sg-nav-item__chevron,
+.sg-nav-item:focus-visible .sg-nav-item__chevron { transform: rotate(180deg); }
+
+/* Tablet ≥480 (breakpoint.xs) */
+@container sg-header (min-width: 480px) {
+  .sg-header__bar { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+  .sg-header__cta { display: inline-flex; }
+}
+
+/* Desktop ≥1280 (breakpoint.lg) */
+@container sg-header (min-width: 1280px) {
+  .sg-header__nav { display: flex; }
+  .sg-header__actions { gap: 1.5rem; }
+  .sg-header__burger { display: none; }
+}

@@ -1,0 +1,29 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './TableOfContents.stories';
+
+<Meta of={S} />
+
+# Table of contents
+
+In-page navigation for long pages (Figma "on-this-page").
+
+| Viewport | Layout |
+|---|---|
+| ≥1280 | sticky sidebar on the left, 296–365px wide |
+| below 1280 | collapsed bar under the header; scrolls with the content; the list opens as an overlay |
+
+<Canvas of={S.Sidebar} />
+<Controls of={S.Sidebar} />
+
+## Rules
+
+- Items match the block headings on the page, in order. Each item links to its block's `id`.
+- The title "On this page" uses `subsection-title`; items use `link`.
+- The list has a 2px `border-divider` line on the left. The active item gets a 2px `border-emphasis` line on top of it and `surface-accent` text. The 2px width comes from Figma, which is wider than the 1px border token.
+- Without `activeId`, the active item follows the scroll position. Choosing an item in the bar closes the overlay.
+
+## Figma
+
+[on-this-page](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=573-19914). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

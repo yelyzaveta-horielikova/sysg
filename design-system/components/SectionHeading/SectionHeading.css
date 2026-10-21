@@ -1,0 +1,29 @@
+/* Section heading — values from tokens.json via --sg-* variables */
+.sg-section-heading { container: sg-section-heading / inline-size; color: var(--sg-color-text-primary); font-family: var(--sg-font-family-base); }
+.sg-section-heading__inner { display: flex; flex-direction: column; gap: var(--sg-space-stack-heading-to-intro); }
+
+.sg-section-heading__title {
+  margin: 0;
+  font-size: var(--sg-text-section-title-size);
+  line-height: var(--sg-text-section-title-line-height);
+  font-weight: var(--sg-text-section-title-weight);
+  font-variation-settings: var(--sg-text-section-title-variation);
+}
+.sg-section-heading__intro {
+  max-width: 780px;
+  font-size: var(--sg-text-body-size);
+  line-height: var(--sg-text-body-line-height);
+  font-weight: var(--sg-text-body-weight);
+  font-variation-settings: var(--sg-text-body-variation);
+}
+.sg-section-heading__intro > :is(p, ul, ol) { margin: 0; }
+
+/* side: narrow column for the side-heading layout */
+.sg-section-heading--side { min-width: var(--sg-container-side-heading-min); max-width: var(--sg-container-side-heading-max); }
+
+/* inline: title column beside the intro from a 1024 viewport (breakpoint.md) = 984 inside the wrapper; stacked below */
+@container sg-section-heading (min-width: 984px) {
+  .sg-section-heading--inline .sg-section-heading__inner { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+  .sg-section-heading--inline .sg-section-heading__title { flex: 0 1 var(--sg-container-side-heading-max); min-width: var(--sg-container-side-heading-min); }
+  .sg-section-heading--inline .sg-section-heading__intro { flex: 0 1 780px; }
+}

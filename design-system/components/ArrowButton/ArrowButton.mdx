@@ -1,0 +1,16 @@
+import { Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './ArrowButton.stories';
+
+<Meta of={S} />
+
+# Arrow button
+
+A round "go" cue (Figma "Arrows/Var.2", external library). Used in the corner of Sharing insights cards.
+
+## Rules
+
+- `white` (white circle, sg-medium arrow) on `sg-medium` or teal surfaces; `blue` (sg-medium circle, white arrow) on `surface-muted`.
+- Inside a clickable card it is decorative: omit `onClick` and `label`. On its own, pass both.
+- Radius `full`.
+
+<Stories />

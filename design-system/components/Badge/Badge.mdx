@@ -1,0 +1,24 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as BadgeStories from './Badge.stories';
+
+<Meta of={BadgeStories} />
+
+# Badge
+
+A tag for a technology, industry or category: text only, a 1px border and no fill. This is the local Figma "Badge" (UI Kit › Cards).
+
+<Canvas of={BadgeStories.Group} />
+<Controls of={BadgeStories.Medium} />
+
+## Rules
+
+- `medium` (padding 8/12, radius md) is the default; use `small` (4/8, radius sm) for dense contexts.
+- `black` on light surfaces, `white` on images or dark surfaces.
+- Group badges with `BadgeGroup` (wrap, 10px gap).
+- Never recreate the external-library "Badge" (Size=Regular).
+
+## Figma
+
+[Badge](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=550-15469). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

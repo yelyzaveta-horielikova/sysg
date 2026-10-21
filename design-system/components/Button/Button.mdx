@@ -1,0 +1,37 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+The only button component (Figma: "CTA-blue", variants Primary, Outlined and White). Label only: no icons. 52px tall, radius `lg`, `button` text style.
+
+<Canvas of={ButtonStories.AllVariants} />
+<Controls of={ButtonStories.Primary} />
+
+## Variants
+
+| Variant | Default | Hover | Loading | Use |
+|---|---|---|---|---|
+| `primary` | sg-blue fill, white label | sg-medium | sg-dark + loader | Hero CTA, CTA card, submit on light surfaces |
+| `outlined` | sg-blue border and label | sg-medium fill, white label | sg-blue border, no fill + loader | Header "Contact us" |
+| `white` | white fill, sg-dark label | grey-bg | grey-bg + loader | Dark form submit, CTAs on blue banners |
+
+## Rules
+
+- One Primary or White button per block.
+- Use `white` only on `surface-dark`, `sg-medium` or image backgrounds; use `primary` on light ones.
+- `loading` is a state of every variant, not a separate variant. Show it only after submit. The label is replaced by the loader and the button keeps its size.
+- The button always fits its label. There is no full-width option.
+
+## Open points
+
+- The loader is a CSS spinner. Figma has only a 1×1 placeholder image for it, so its shape and colour are assumptions.
+- The phone form uses a 44px submit (Figma); the form sets it, not the Button component.
+
+## Figma
+
+[CTA-blue](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=573-19566). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

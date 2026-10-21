@@ -1,0 +1,16 @@
+import { Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './Icon.stories';
+
+<Meta of={S} />
+
+# Icon
+
+Icons exported from the Figma UI Kit (Icon Park), stored in `assets/icons`. They use `currentColor`, so the colour comes from the parent's CSS.
+
+## Rules
+
+- Sizes are fixed (`system.md` → Icons): a 64px box as card media; 24–28px next to a line of text.
+- Colour: `accent-icon` on light surfaces, `text-on-dark` on dark ones, unless a component says otherwise.
+- Decorative by default (`aria-hidden`). Give the surrounding link or button an accessible name.
+
+<Stories />

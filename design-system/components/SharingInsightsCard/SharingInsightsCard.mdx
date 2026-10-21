@@ -1,0 +1,37 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './SharingInsightsCard.stories';
+
+<Meta of={S} />
+
+# Sharing insights card
+
+A teaser for a blog article with its author (Figma "Sharing-insights-card"). The whole card is a link.
+
+<Canvas of={S.Row} />
+<Controls of={S.Accent} />
+
+## Structure
+
+- Article title (`subsection-title`) at the top.
+- Square author photo (1:1, half the card width, max 240px) flush with the bottom-left corner, with name and role (`body-article`) beside it.
+- Arrow button in the bottom-right corner (24px from the edges).
+- Radius md; at least 340px tall.
+
+## Tones
+
+| Tone | Background | Text | Arrow button |
+|---|---|---|---|
+| `accent` | sg-medium | white | white |
+| `muted` | surface-muted | dark | blue |
+| `teal` | teal | dark | white |
+
+## Rules
+
+- Three cards per row from a 1024 viewport, one column below (Card grid pattern, `gap.XS`).
+- Mix tones within a row as the content needs; the tone follows the article or author.
+
+## Figma
+
+[Sharing-insights-card](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=622-9735). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

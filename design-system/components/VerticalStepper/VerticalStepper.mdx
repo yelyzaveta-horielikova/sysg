@@ -1,0 +1,27 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './VerticalStepper.stories';
+
+<Meta of={S} />
+
+# Vertical stepper
+
+An ordered process (Figma "vertical-stepper"). Steps sit on a 1px `border-divider` line on the left, each marked with a 10px `sg-medium` dot.
+
+<Canvas of={S.Default} />
+<Controls of={S.Default} />
+
+## Structure
+
+Each step has a title (`subsection-title`, sg-medium, h3), then optional text (`body-article`) and dash list (18/1.4 ExtraLight, an off-scale website value hard-coded in the component) 16px below. Steps are 32px apart (`stack.group`), with a 30px left padding and 48px of space after the last step.
+
+## Rules
+
+- Use it only for ordered steps. It's rendered as an ordered list.
+- It stays vertical at every size.
+- Used in the Vertical-group block, next to a `side` Section heading (`patterns.md`).
+
+## Figma
+
+[vertical-stepper](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=608-11701). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

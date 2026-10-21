@@ -1,0 +1,21 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './Media.stories';
+
+<Meta of={S} />
+
+# Media
+
+An image, a video, or a placeholder for one. Radius `md`, full width of its column.
+
+<Canvas of={S.ImagePlaceholder} />
+<Controls of={S.ImagePlaceholder} />
+
+## Rules
+
+- `kind="video"` always plays by itself, muted, looped and inline. There are no controls.
+- `alt` is required: in case studies the media carries meaning.
+- Without `ratio` a file keeps its natural height. `ratio` crops it to one of the sanctioned ratios (`layout.md` → Alignment rules).
+- Without `src` it shows a placeholder (`surface-muted`, divider border, "Image" or "Video" in `caption`), 2:1 unless a `ratio` is set.
+- Inside a card use `Card` with `media={{ kind: 'image', … }}`.
+
+<Stories />

@@ -1,0 +1,65 @@
+/* Check row — values from tokens.json via --sg-* variables */
+.sg-check-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sg-space-gap-l);
+}
+/* Two columns from 768 (patterns.md → Pros-and-cons-colored); one below */
+@media (min-width: 768px) {
+  .sg-check-list--cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.sg-check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--sg-font-family-base);
+}
+.sg-check-row--dark { color: var(--sg-color-text-primary); }
+.sg-check-row--white { color: var(--sg-color-text-on-dark); }
+
+/* The mark is centred on the first line of text: its box is one line of that text tall */
+.sg-check-row__mark {
+  flex: none;
+  display: flex;
+  align-items: center;
+  height: calc(var(--sg-text-body-article-size) * var(--sg-text-body-article-line-height));
+}
+.sg-check-row__mark--title {
+  height: calc(1.15rem * 1.4);
+}
+.sg-check-row--large .sg-check-row__mark:not(.sg-check-row__mark--title) {
+  height: calc(1.125rem * 1.4);
+}
+.sg-check-row__icon { display: block; }
+.sg-check-row--dark.sg-check-row--check .sg-check-row__icon { color: var(--sg-color-accent-icon); }
+.sg-check-row--dark.sg-check-row--cross .sg-check-row__icon { color: var(--sg-color-text-primary); }
+.sg-check-row--white .sg-check-row__icon { color: var(--sg-color-text-on-dark); }
+
+.sg-check-row__content { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
+/* Title: off-scale website value from Figma (18.4/1.4 Light), hard-coded on purpose (not a token) */
+.sg-check-row__title {
+  font-size: 1.15rem;
+  line-height: 1.4;
+  font-weight: 300;
+  font-variation-settings: "CRSV" 0, "SHRP" 0;
+}
+.sg-check-row__text {
+  font-size: var(--sg-text-body-article-size);
+  line-height: var(--sg-text-body-article-line-height);
+  font-weight: var(--sg-text-body-article-weight);
+  font-variation-settings: var(--sg-text-body-article-variation);
+}
+
+/* Large text-only rows (case-study goals): off-scale website value from Figma (18/1.4 ExtraLight), hard-coded on purpose (not a token) */
+.sg-check-row--large .sg-check-row__text {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 200;
+  font-variation-settings: "CRSV" 0, "SHRP" 0;
+}
+
+.sg-check-row__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

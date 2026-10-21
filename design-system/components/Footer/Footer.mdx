@@ -1,0 +1,31 @@
+import { Meta, Canvas, Stories } from '@storybook/addon-docs/blocks';
+import * as FooterStories from './Footer.stories';
+
+<Meta of={FooterStories} />
+
+# Footer
+
+The global site footer, on every page.
+
+- **Top part:** link columns: Services, Portfolio, Company, Blog, Legal, Contacts and Locations.
+- **Bottom row:** review-platform ratings and social links.
+
+The layout switches by width: desktop ≥1024 (max 1520), tablet 768–1023, phone &lt;768.
+
+<Canvas of={FooterStories.Desktop} />
+
+## Rules
+
+- The content is fixed. Do not restructure the columns.
+- Column headings use `body-accent`; links use `link`.
+- Review badges are `surface-dark` with radius md. Social buttons are 48px circles in `surface-social`, with the icon in `accent-icon`.
+
+## Decisions (Figma differs or is silent)
+
+- Links get the `text-link-hover` colour on hover. Figma has no footer hover state; this reuses the nav hover.
+
+## Figma
+
+[Footer](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=535-24109). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

@@ -1,0 +1,30 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './SectionHeading.stories';
+
+<Meta of={S} />
+
+# Section heading
+
+The heading and optional intro at the top of every block (Figma "text"). The title uses `section-title` (h2); the intro uses `body`, max 780px wide, 24px below the title.
+
+<Canvas of={S.Stacked} />
+<Controls of={S.Stacked} />
+
+## Layouts
+
+| Layout | Figma | Use |
+|---|---|---|
+| `stacked` | Down | default; title above the intro |
+| `inline` | Right | title column (320–420) beside the intro from 1024px; stacked below |
+| `side` | Down-fixed | 320–420px column for the side-heading block layout (`layout.md`) |
+
+## Rules
+
+- Exactly one Section heading per block. Use it rather than ad-hoc headings.
+- Below 1024 the block uses `stacked` (the `inline` layout does this by itself).
+
+## Figma
+
+[text](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=542-12882). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

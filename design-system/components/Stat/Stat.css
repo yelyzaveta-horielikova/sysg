@@ -1,0 +1,31 @@
+/* Stat — values from tokens.json via --sg-* variables */
+.sg-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sg-space-stack-heading-to-intro);
+  padding: var(--sg-space-inset-sm) 0;
+  color: var(--sg-color-text-on-dark);
+  font-family: var(--sg-font-family-base);
+}
+.sg-stat__head { display: flex; flex-direction: column; gap: 0.5rem; }
+.sg-stat__value {
+  font-size: var(--sg-text-display-size);
+  line-height: var(--sg-text-display-line-height);
+  font-weight: var(--sg-text-display-weight);
+  font-variation-settings: var(--sg-text-display-variation);
+}
+.sg-stat__label,
+.sg-stat__description {
+  margin: 0;
+  font-size: var(--sg-text-body-article-size);
+  line-height: var(--sg-text-body-article-line-height);
+  font-weight: var(--sg-text-body-article-weight);
+  font-variation-settings: var(--sg-text-body-article-variation);
+}
+
+.sg-stat-grid { container: sg-stat-grid / inline-size; }
+.sg-stat-grid__items { display: grid; grid-template-columns: 1fr; }
+/* Figma: 2 × 2 with a 32px gap (off-token, nearest gap.L) from a 768 viewport (breakpoint.sm) = 728 inside the wrapper */
+@container sg-stat-grid (min-width: 728px) {
+  .sg-stat-grid__items { grid-template-columns: 1fr 1fr; gap: var(--sg-space-gap-l); }
+}

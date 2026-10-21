@@ -1,0 +1,25 @@
+/* CardGrid — columns respond to the grid's own width (container queries).
+   The grid sits inside the page wrapper (20px side margins), so the thresholds are
+   the viewport breakpoints from tokens.json minus 40px: sm 768 → 728, md 1024 → 984, lg 1280 → 1240. */
+.sg-card-grid { container: sg-card-grid / inline-size; }
+
+.sg-card-grid__items {
+  --sg-grid-cols: var(--sg-grid-cols-base);
+  display: grid;
+  grid-template-columns: repeat(var(--sg-grid-cols), minmax(0, 1fr));
+  gap: var(--sg-grid-gap);
+}
+
+@container sg-card-grid (min-width: 728px) { .sg-card-grid__items { --sg-grid-cols: var(--sg-grid-cols-sm); } }
+@container sg-card-grid (min-width: 984px) { .sg-card-grid__items { --sg-grid-cols: var(--sg-grid-cols-md); } }
+@container sg-card-grid (min-width: 1240px) { .sg-card-grid__items { --sg-grid-cols: var(--sg-grid-cols-lg); } }
+
+/* Divided: every item draws a divider on its top and left edge; the grid is shifted
+   up/left by 1px and clipped, so the first row's top and first column's left lines are hidden.
+   Result: lines only between items, never on the outer edge (also with an incomplete last row). */
+.sg-card-grid--divided { overflow: hidden; }
+.sg-card-grid--divided .sg-card-grid__items { margin: -1px 0 0 -1px; }
+.sg-card-grid--divided .sg-card-grid__items > * {
+  border-top: var(--sg-border-divider);
+  border-left: var(--sg-border-divider);
+}

@@ -1,0 +1,30 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './ExpertQuote.stories';
+
+<Meta of={S} />
+
+# Expert quote
+
+A statement from a SysGears expert or leader (Figma "expert-quote-card"). No card fill.
+
+<Canvas of={S.Default} />
+<Controls of={S.Default} />
+
+## Layout
+
+| Width | Layout |
+|---|---|
+| ≥1024 viewport | 244×264 avatar beside the quote, 64px apart, 64px side padding |
+| below 1024 | quote, then a 74×80 avatar with name and role; 16px side padding |
+
+## Rules
+
+- One per block (Expert-quote pattern).
+- The photo is a cut-out portrait with a transparent background. It sits in an `sg-medium` circle, and the head rises above the circle.
+- Quote, name and role use `body-article`; the role is in `text-secondary` (black at 70%, as on the website).
+
+## Figma
+
+[expert-quote-card](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=622-6608). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

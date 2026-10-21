@@ -1,0 +1,22 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './Stat.stories';
+
+<Meta of={S} />
+
+# Stat
+
+A key number with an explanation (Figma "text-field"). Number in `display`, label and description in `body-article`, all white. Always on a dark or image surface.
+
+<Canvas of={S.Grid} />
+<Controls of={S.Default} />
+
+## Rules
+
+- Use exactly 4 stats in a `StatGrid`: 2 × 2 from 768px, one column below.
+- The grid gap is `gap.L`. Figma draws an off-token 32px.
+
+## Figma
+
+[text-field](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=542-13068), [Sysgears-in-numbers-block](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=542-13093). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

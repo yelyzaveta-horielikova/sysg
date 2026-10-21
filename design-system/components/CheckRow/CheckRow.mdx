@@ -1,0 +1,51 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './CheckRow.stories';
+
+<Meta of={S} />
+
+# Check row
+
+A point marked with a check or a cross (Figma "row"). One component replaces the Figma "row" set (White, Dark-check, Dark-cross) and the "Checkbox" item.
+
+<Canvas of={S.TwoColumns} />
+<Controls of={S.Default} />
+
+## Structure
+
+1. **Mark**: a 28px outlined circle with a check or cross (Figma "check-one"). Check: `accent-icon`; cross: `text-primary`; on `white`: `text-on-dark`. It's centred on the first line of text.
+2. **Title** (optional): 18.4/1.4 Light (see Text sizes).
+3. **Text**: `body-article`, 12px below the title.
+
+The mark sits 12px from the text. Screen readers hear "Yes:" or "No:" before each point.
+
+## CheckList
+
+Rows always go in a `CheckList` (a `ul`). Rows are `gap.L` apart. `columns={2}` puts them in two columns from 768 and one column below.
+
+| Block | Usage |
+|---|---|
+| Dark-highlights "Check" | `CheckList` of `variant="white"` rows on `surface-dark` |
+| Pros-and-cons | one `CheckList` per column, titled rows |
+| Pros-and-cons-colored, case-study goals | `CheckList columns={2}`, text-only rows |
+
+## Rules
+
+- Every row in a list uses the same `variant`, and either all rows have a title or none do.
+- `white` only on dark or image surfaces; `dark` everywhere else.
+- Use `cross` only next to `check` rows, to compare (Pros-and-cons).
+
+## Unified values (differ from the individual Figma components)
+
+- The mark is 28px everywhere. Figma draws 38px (White), 28px (Dark) and a filled 24px circle (case-study goals, Checkbox item).
+- The case-study goals row had a filled sg-medium check and a filled red (`error`) cross. Both use the outlined mark here.
+- On light surfaces the check uses `accent-icon`. Figma's Dark-check draws it white, which is invisible on white.
+
+## Text sizes
+
+The title is 18.4/1.4 Light. Text is `body-article` (16px); for the text-only rows in the case-study goals pass `textSize="large"` (18/1.4 ExtraLight). Both are off-scale website values, hard-coded in the component.
+
+## Figma
+
+[row](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=606-5562), [Checkbox](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=563-28001). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

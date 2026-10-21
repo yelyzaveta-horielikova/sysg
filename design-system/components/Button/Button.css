@@ -1,0 +1,58 @@
+/* Button. Values: tokens.json via --sg-* variables. */
+.sg-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* 52px tall: (52 − 2 border − 25.2 label) / 2 = 12.4px vertical; sides inset.sm (Figma draws 32) */
+  padding: 0.775rem var(--sg-space-inset-sm);
+  border: var(--sg-border-width) solid transparent;
+  border-radius: var(--sg-radius-lg);
+  font-family: var(--sg-font-family-base);
+  font-size: var(--sg-text-button-size);
+  line-height: var(--sg-text-button-line-height);
+  font-weight: var(--sg-text-button-weight);
+  font-variation-settings: var(--sg-text-button-variation);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+/* Primary */
+.sg-button--primary { background: var(--sg-color-action-primary); color: var(--sg-color-text-on-dark); }
+.sg-button--primary:hover { background: var(--sg-color-action-primary-hover); }
+.sg-button--primary.sg-button--loading { background: var(--sg-palette-sg-dark); }
+
+/* Outlined */
+.sg-button--outlined { background: transparent; border-color: var(--sg-color-action-primary); color: var(--sg-color-action-primary); }
+.sg-button--outlined:hover { background: var(--sg-color-action-primary-hover); border-color: var(--sg-color-action-primary-hover); color: var(--sg-color-text-on-dark); }
+/* Outlined loading: keeps its outline (no hover fill); loader in sg-blue */
+.sg-button--outlined.sg-button--loading,
+.sg-button--outlined.sg-button--loading:hover { background: transparent; border-color: var(--sg-color-action-primary); }
+
+/* White — dark, blue or image surfaces only */
+.sg-button--white { background: var(--sg-palette-white); color: var(--sg-palette-sg-dark); }
+.sg-button--white:hover,
+.sg-button--white.sg-button--loading { background: var(--sg-palette-grey-bg); }
+
+/* Loading: label stays in the layout (keeps the size), loader is centred on top */
+.sg-button--loading { cursor: progress; }
+.sg-button--loading .sg-button__label { visibility: hidden; }
+.sg-button__loader {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 36px;
+  height: 36px;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+  border-top-color: var(--sg-color-action-primary);
+  border-radius: var(--sg-radius-full);
+  animation: sg-button-spin 0.8s linear infinite;
+}
+.sg-button--primary .sg-button__loader { border-top-color: var(--sg-palette-sg-light-blue); }
+
+@keyframes sg-button-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .sg-button__loader { animation-duration: 2.4s; } }

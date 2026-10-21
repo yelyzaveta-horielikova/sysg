@@ -1,0 +1,43 @@
+/* Sharing-insights card — values from tokens.json via --sg-* variables */
+.sg-insights-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--sg-space-gap-l);
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 340px;
+  padding-top: 1.5rem;
+  overflow: hidden;
+  border-radius: var(--sg-radius-md);
+  text-decoration: none;
+  font-family: var(--sg-font-family-base);
+}
+.sg-insights-card--accent { background: var(--sg-palette-sg-medium); color: var(--sg-color-text-on-dark); }
+.sg-insights-card--muted { background: var(--sg-color-surface-muted); color: var(--sg-color-text-primary); }
+.sg-insights-card--teal { background: var(--sg-palette-teal); color: var(--sg-color-text-primary); }
+
+.sg-insights-card__title {
+  margin: 0;
+  padding: 0 1.25rem;
+  font-size: var(--sg-text-subsection-title-size);
+  line-height: var(--sg-text-subsection-title-line-height);
+  font-weight: var(--sg-text-subsection-title-weight);
+  font-variation-settings: var(--sg-text-subsection-title-variation);
+}
+
+/* Bottom: square author photo flush with the card's bottom-left corner, name and role beside it */
+.sg-insights-card__author { display: flex; align-items: flex-start; }
+.sg-insights-card__photo { display: block; width: 50%; max-width: 240px; aspect-ratio: 1; object-fit: cover; }
+.sg-insights-card__who {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.5rem 0 0 1rem;
+  font-size: var(--sg-text-body-article-size);
+  line-height: var(--sg-text-body-article-line-height);
+  font-weight: var(--sg-text-body-article-weight);
+  font-variation-settings: var(--sg-text-body-article-variation);
+}
+.sg-insights-card__arrow { position: absolute; right: 1.5rem; bottom: 1.5rem; }

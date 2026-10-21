@@ -1,0 +1,32 @@
+import { Meta, Canvas, Stories } from '@storybook/addon-docs/blocks';
+import * as HeaderStories from './Header.stories';
+
+<Meta of={HeaderStories} />
+
+# Header
+
+The global site header, on every page. It switches layout by its own width, which equals the viewport width:
+
+| Width | Content | Height |
+|---|---|---|
+| ≥1280 (desktop) | logo · 7 nav items · search · Outlined "Contact us" | 100 |
+| 480–1279 (tablet) | logo · search · "Contact us" · burger | 104 |
+| &lt;480 (mobile) | logo · search · burger | 96 |
+
+<Canvas of={HeaderStories.Desktop} />
+
+## Rules
+
+- It spans the viewport minus the 20px side margins, up to 1920 (not capped at 1520).
+- Do not add menu items or actions.
+- Nav items with a submenu show a chevron. On hover the label turns sg-medium, a 4px sg-blue underline appears and the chevron flips.
+
+## Not specified in Figma
+
+The submenu or mega-menu content, the search overlay and the burger-menu content. The component exposes `onSearchClick` and `onMenuClick` for these.
+
+## Figma
+
+[Header](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=540-11013), [Nav](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=540-10124). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

@@ -1,0 +1,54 @@
+/* Client feedback — values from tokens.json via --sg-* variables */
+.sg-client-feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--sg-space-inset-sm) var(--sg-space-inset-xs);
+  background: var(--sg-color-surface-muted);
+  border-left: var(--sg-border-emphasis); /* left line only, no radius (Figma) */
+  color: var(--sg-color-text-primary);
+  font-family: var(--sg-font-family-base);
+}
+
+.sg-client-feedback__header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 3.75rem; }
+.sg-client-feedback__platform {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  /* off-scale website value from Figma (22/1.3 Light), hard-coded on purpose (not a token) */
+  font-size: 1.375rem;
+  line-height: 1.3;
+  font-weight: 300;
+  font-variation-settings: "CRSV" 0, "SHRP" 0;
+}
+.sg-client-feedback__logo { opacity: 0.8; }
+.sg-client-feedback__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* off-scale website value from Figma (18/1.4 ExtraLight), hard-coded on purpose (not a token) */
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 200;
+  font-variation-settings: "CRSV" 0, "SHRP" 0;
+}
+
+.sg-client-feedback__quote,
+.sg-client-feedback__name {
+  margin: 0;
+  font-size: var(--sg-text-body-article-size);
+  line-height: var(--sg-text-body-article-line-height);
+  font-weight: var(--sg-text-body-article-weight);
+  font-variation-settings: var(--sg-text-body-article-variation);
+}
+
+.sg-client-feedback__author { display: flex; align-items: center; gap: 1.25rem; }
+.sg-client-feedback__photo { flex-shrink: 0; width: 72px; height: 72px; object-fit: cover; border-radius: var(--sg-radius-sm); }
+.sg-client-feedback__who { display: flex; flex-direction: column; }
+.sg-client-feedback__role {
+  font-size: var(--sg-text-caption-size);
+  line-height: var(--sg-text-caption-line-height);
+  font-weight: var(--sg-text-caption-weight);
+}

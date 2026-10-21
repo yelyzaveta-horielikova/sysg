@@ -1,0 +1,26 @@
+import { Meta, Canvas, Controls, Stories } from '@storybook/addon-docs/blocks';
+import * as S from './HeroText.stories';
+
+<Meta of={S} />
+
+# Hero text
+
+The page-opening statement (Figma "hero-text"): `display` h1, an optional lead (22/1.3 Light: an off-scale website value hard-coded in the component, not `statement`), and an optional Primary button. Items are 60px apart (`spacing.section.M`), max 1026px wide.
+
+<Canvas of={S.Default} />
+<Controls of={S.Default} />
+
+## Rules
+
+- One per page, first block after the header. It holds the page's only h1.
+- One button only (Primary).
+
+## Open points
+
+- Figma has no hero background, image or responsive spec.
+
+## Figma
+
+[hero-text](https://www.figma.com/design/dNuuWAkz8xH9Squ9ozlfUb/Sysgears-website-2.0?node-id=573-19617). Variant-by-variant mapping: Design System › Guidelines › Figma mapping.
+
+<Stories />

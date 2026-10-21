@@ -1,0 +1,12 @@
+{
+  "name": "sysgears-design-system-workspace",
+  "private": true,
+  "workspaces": [
+    "design-system",
+    "storybook"
+  ],
+  "scripts": {
+    "storybook": "npm run storybook --workspace @sysgears/storybook --",
+    "build-storybook": "npm run build-storybook --workspace @sysgears/storybook --"
+  }
+}

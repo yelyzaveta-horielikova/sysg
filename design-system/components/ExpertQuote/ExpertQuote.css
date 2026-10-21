@@ -1,0 +1,31 @@
+/* Expert quote — values from tokens.json via --sg-* variables.
+   Layout switches at a 1024 viewport (breakpoint.md) = 984 inside the page wrapper. */
+.sg-expert-quote { container: sg-expert-quote / inline-size; margin: 0; color: var(--sg-color-text-primary); font-family: var(--sg-font-family-base); }
+.sg-expert-quote__inner { display: flex; flex-direction: column; padding: 0 1rem; }
+
+/* Avatar: blue circle with a cut-out portrait rising above it; the frame is a pill so the head stays inside */
+.sg-expert-quote__avatar { position: relative; flex-shrink: 0; overflow: hidden; border-radius: var(--sg-radius-full); }
+.sg-expert-quote__avatar img { position: relative; display: block; width: 100%; height: 100%; object-fit: cover; object-position: bottom; }
+.sg-expert-quote__circle { position: absolute; left: 0; right: 0; bottom: 0; aspect-ratio: 1; border-radius: var(--sg-radius-full); background: var(--sg-palette-sg-medium); }
+.sg-expert-quote__avatar--large { display: none; width: 244px; height: 264px; }
+.sg-expert-quote__avatar--small { width: 74px; height: 80px; }
+
+.sg-expert-quote__content { display: flex; flex-direction: column; gap: 2.5rem; }
+.sg-expert-quote__quote,
+.sg-expert-quote__who {
+  margin: 0;
+  font-size: var(--sg-text-body-article-size);
+  line-height: var(--sg-text-body-article-line-height);
+  font-weight: var(--sg-text-body-article-weight);
+  font-variation-settings: var(--sg-text-body-article-variation);
+}
+.sg-expert-quote__author { display: flex; align-items: center; gap: 1rem; }
+.sg-expert-quote__who { display: flex; flex-direction: column; }
+
+@container sg-expert-quote (min-width: 984px) {
+  .sg-expert-quote__inner { flex-direction: row; align-items: flex-start; gap: 4rem; padding: 0 4rem; }
+  .sg-expert-quote__avatar--large { display: block; }
+  .sg-expert-quote__avatar--small { display: none; }
+  .sg-expert-quote__content { padding-top: 0.875rem; }
+}
+.sg-expert-quote__role { color: var(--sg-color-text-secondary); }

@@ -1,0 +1,30 @@
+/* Block, BlockLayout, Columns — values from tokens.json via --sg-* variables.
+   The global variant switch is the 1024 viewport (layout.md → Breakpoints). */
+
+/* Wrapper: content max 1520, 20px side margins; above 1560 the margins grow */
+.sg-block { box-sizing: border-box; width: 100%; padding-inline: var(--sg-container-side-margin); }
+.sg-block__inner { max-width: var(--sg-container-max); margin-inline: auto; }
+
+/* Coloured or image-background blocks run edge to edge below 1024 */
+@media (max-width: 1023px) {
+  .sg-block--bleed { padding-inline: 0; }
+  .sg-block--bleed .sg-contact-form { border-radius: 0; }
+}
+
+/* Heading → content: spacing.section.M. Content groups: spacing.section.M apart. */
+.sg-block-layout { display: flex; flex-direction: column; gap: var(--sg-space-section-m); }
+.sg-block-layout__content { display: flex; flex-direction: column; gap: var(--sg-space-section-m); min-width: 0; }
+
+@media (min-width: 1024px) {
+  /* Side heading: heading column (320–420, set by Section heading) + content, gap.L */
+  .sg-block-layout--side { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--sg-space-gap-l); align-items: start; }
+}
+
+/* Columns: one column below 1024, whole spans of 12 above */
+.sg-columns { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sg-space-gap-l); }
+.sg-columns__item { display: flex; flex-direction: column; min-width: 0; }
+.sg-columns__item > * { flex: 1; }
+@media (min-width: 1024px) {
+  .sg-columns { grid-template-columns: repeat(var(--sg-grid-columns), minmax(0, 1fr)); }
+  .sg-columns__item { grid-column: span var(--sg-span); }
+}

@@ -1,0 +1,17 @@
+/* Arrow button — values from tokens.json via --sg-* variables */
+.sg-arrow-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: var(--sg-radius-full);
+  font-family: var(--sg-font-family-base);
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+}
+.sg-arrow-button--white { background: var(--sg-palette-white); color: var(--sg-palette-sg-medium); }
+.sg-arrow-button--blue { background: var(--sg-palette-sg-medium); color: var(--sg-palette-white); }
+button.sg-arrow-button { cursor: pointer; }

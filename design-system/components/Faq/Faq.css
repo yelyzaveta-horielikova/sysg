@@ -1,0 +1,20 @@
+/* FAQ — values from tokens.json via --sg-* variables */
+.sg-faq { display: flex; flex-direction: column; gap: var(--sg-space-section-m); max-width: 1240px; }
+.sg-faq__items { display: flex; flex-direction: column; gap: var(--sg-space-section-m); }
+
+.sg-faq-item { display: flex; flex-direction: column; gap: 1rem; color: var(--sg-color-text-primary); font-family: var(--sg-font-family-base); }
+.sg-faq-item__question {
+  margin: 0;
+  font-size: var(--sg-text-subsection-title-size);
+  line-height: var(--sg-text-subsection-title-line-height);
+  font-weight: var(--sg-text-subsection-title-weight);
+  font-variation-settings: var(--sg-text-subsection-title-variation);
+}
+.sg-faq-item__answer {
+  font-size: var(--sg-text-body-article-size);
+  line-height: var(--sg-text-body-article-line-height);
+  font-weight: var(--sg-text-body-article-weight);
+  font-variation-settings: var(--sg-text-body-article-variation);
+}
+.sg-faq-item__answer > :is(p, ul, ol) { margin: 0; }
+.sg-faq-item__answer > * + * { margin-top: 1rem; }
