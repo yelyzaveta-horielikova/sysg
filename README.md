@@ -1,6 +1,6 @@
 # SysGears Design System
 
-The design system behind the [SysGears](https://sysgears.com) marketing website: a written spec, design tokens, React components and a Storybook that shows them all.
+The design system behind the [SysGears] website: a written spec, design tokens, React components and a Storybook that shows them all.
 
 The source of truth for the visual design is the Figma file "Sysgears website 2.0" (page **UI Kit**). This repository turns it into rules and code that both people and AI tools can follow.
 
@@ -21,46 +21,6 @@ The source of truth for the visual design is the Figma file "Sysgears website 2.
 ├── storybook/          the Storybook app (React + TypeScript + Vite)
 └── figma-updates.md    changes still needed in the Figma file
 ```
-
-## Getting started
-
-You need Node.js 20.19 or newer (22 recommended).
-
-```bash
-npm install
-```
-
-```bash
-npm run storybook
-```
-
-Storybook opens at http://localhost:6006. It has two sections:
-
-- **Design System:** the written guidelines (System, Layout, Patterns, Figma mapping) and the token pages.
-- **Components:** every component with live examples, controls and its docs page.
-
-To build a static Storybook (output in `storybook/storybook-static`):
-
-```bash
-npm run build-storybook
-```
-
-## Using the components
-
-The package is a workspace (`@sysgears/design-system`), not yet published to npm. In an app inside this workspace:
-
-```tsx
-import { injectTokenStyles } from '@sysgears/design-system/styles/tokens';
-import { Button, Card, CardGrid } from '@sysgears/design-system';
-
-injectTokenStyles(); // adds the --sg-* CSS variables and .sg-text-* classes once
-
-export function Example() {
-  return <Button variant="primary">Contact us</Button>;
-}
-```
-
-Load the Geologica variable font with all its axes, as in `storybook/.storybook/preview-head.html`.
 
 ## How the system works
 
